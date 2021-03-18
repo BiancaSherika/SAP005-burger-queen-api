@@ -15,6 +15,11 @@ if (config.use_env_variable) {
   sequelize = new Sequelize(config.database, config.username, config.password, config);
 }
 
+const { Sequelize } = require('sequelize');
+// Option 1: Passing a connection URI
+const sequelize = new Sequelize('sqlite::memory:') // Example for sqlite
+const sequelize = new Sequelize('postgres://user:pass@example.com:5432/dbname') // Example for postgres
+
 fs
   .readdirSync(__dirname)
   .filter(file => {
