@@ -7,6 +7,7 @@ const basename = path.basename(__filename);
 const env = process.env.NODE_ENV || 'development';
 const config = require(__dirname + '/../config/config.json')[env];
 const db = {};
+const port= process.env.Port || 3000
 
 let sequelize;
 if (config.use_env_variable) {
@@ -14,11 +15,6 @@ if (config.use_env_variable) {
 } else {
   sequelize = new Sequelize(config.database, config.username, config.password, config);
 }
-
-const { Sequelize } = require('sequelize');
-// Option 1: Passing a connection URI
-const sequelize = new Sequelize('sqlite::memory:') // Example for sqlite
-const sequelize = new Sequelize('postgres://user:pass@example.com:5432/dbname') // Example for postgres
 
 fs
   .readdirSync(__dirname)
