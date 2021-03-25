@@ -1,26 +1,75 @@
-const getUsers = (req, res) => {
-  console.log("você também pode utilizar o console para visualizar =)")
-  res.send("Request Get Users")
+const dataBase = require("../db/models")
+
+class UsersController {
+  static async getUsers(req, res, next) {
+    try {
+      const allUsers = await dataBase.users.findAll({
+        attributes: {
+          exclude: ["password"]
+        }
+      });
+      return res.status(200).json(allUsers);
+    } catch (err) {
+      return res.status(400).json({ error : err.message })
+    }
+  }
+
+  static async getUserId(req, res, next) {
+    const { id } = req.params
+    try {
+      const userId = await dataBase.users.findAll({
+        where: {
+          id: Number(id)
+        },
+        attributes: {
+          exclude: ["password"]
+        }
+      });
+      return res.status(200).json(userId)
+    } catch(err){
+      return res.status(400).json({ error: err.message })
+    }
+  }
+
+  static async createUser(req, res, next) {
+    const newUser = req.body;
+    try {
+      const createdUser = await dataBase.users.create(newUser);
+      return res.status(201).json(createdUser)
+    } catch (err) {
+      return res.status(400).json({ error: err.message })
+    }
+  }
+
+  static async updateUser(req, res, next) {
+    const { id } = req.params
+    try {
+      await dataBase.users.update(
+        { name: req.body.name, password: req.body.password, role: req.body.role }, {
+        where: {
+          id: Number(id)
+        }
+      });
+      return res.status(201).json({ status: "usuário alterado com sucesso"})
+    } catch(err) {
+      return res.status(400).json({ error: err.message })
+    }
+  }
+
+  static async deleteUser(req, res, next) {
+    const { id } = req.params
+    try {
+      const deletedUser =  await dataBase.users.destroy({
+        where: {
+          id: Number(id)
+        }
+      });
+      return res.status(201).json({ status: "usuário deletado com sucesso"})
+    } catch(err) {
+      return res.status(400).json({ error: err.message })
+    }
+  }
+
 }
 
-const getUserId = (req, res) => {
-  console.log("você também pode utilizar o console para visualizar =)")
-  res.send("Request Get User ID")
-}
-
-const creatUser = (req, res) => {
-  console.log("você também pode utilizar o console para visualizar =)")
-  res.send("Request Creat User")
-}
-
-const updateUserId = (req, res) => {
-  console.log("você também pode utilizar o console para visualizar =)")
-  res.send("Request Update User ID")
-}
-
-const deleteUserId = (req, res) => {
-  console.log("você também pode utilizar o console para visualizar =)")
-  res.send("Request Delete User ID")
-}
-
-module.exports = { getUsers, getUserId, creatUser, updateUserId, deleteUserId }
+module.exports = UsersController;
