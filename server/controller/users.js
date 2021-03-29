@@ -1,9 +1,9 @@
-const dataBase = require("../db/models")
+const data = require("../db/models")
 
 class UsersController {
   static async getUsers(req, res, next) {
     try {
-      const allUsers = await dataBase.users.findAll({
+      const allUsers = await data.users.findAll({
         attributes: {
           exclude: ["password"]
         }
@@ -17,7 +17,7 @@ class UsersController {
   static async getUserId(req, res, next) {
     const { id } = req.params
     try {
-      const userId = await dataBase.users.findAll({
+      const userId = await data.users.findAll({
         where: {
           id: Number(id)
         },
@@ -34,7 +34,7 @@ class UsersController {
   static async createUser(req, res, next) {
     const newUser = req.body;
     try {
-      const createdUser = await dataBase.users.create(newUser);
+      const createdUser = await data.users.create(newUser);
       return res.status(201).json(createdUser)
     } catch (err) {
       return res.status(400).json({ error: err.message })
@@ -44,7 +44,7 @@ class UsersController {
   static async updateUser(req, res, next) {
     const { id } = req.params
     try {
-      await dataBase.users.update(
+      await data.users.update(
         { name: req.body.name, password: req.body.password, role: req.body.role }, {
         where: {
           id: Number(id)
@@ -59,7 +59,7 @@ class UsersController {
   static async deleteUser(req, res, next) {
     const { id } = req.params
     try {
-      const deletedUser =  await dataBase.users.destroy({
+      await data.users.destroy({
         where: {
           id: Number(id)
         }
