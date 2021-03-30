@@ -1,7 +1,7 @@
 const data = require("../db/models")
 
 class UsersController {
-  static async getUsers(req, res, next) {
+  static async getUsers(__, res) {
     try {
       const allUsers = await data.users.findAll({
         attributes: {
@@ -9,12 +9,12 @@ class UsersController {
         }
       });
       return res.status(200).json(allUsers);
-    } catch (err) {
-      return res.status(400).json({ error : err.message })
+    } catch (e) {
+      return res.status(400).json({ error : e.message })
     }
   }
 
-  static async getUserId(req, res, next) {
+  static async getUserId(req, res) {
     const { id } = req.params
     try {
       const userId = await data.users.findAll({
@@ -26,22 +26,22 @@ class UsersController {
         }
       });
       return res.status(200).json(userId)
-    } catch(err){
-      return res.status(400).json({ error: err.message })
+    } catch(e) {
+      return res.status(400).json({ error: e.message })
     }
   }
 
-  static async createUser(req, res, next) {
+  static async createUser(req, res) {
     const newUser = req.body;
     try {
       const createdUser = await data.users.create(newUser);
       return res.status(201).json(createdUser)
-    } catch (err) {
-      return res.status(400).json({ error: err.message })
+    } catch (e) {
+      return res.status(400).json({ error: e.message })
     }
   }
 
-  static async updateUser(req, res, next) {
+  static async updateUser(req, res) {
     const { id } = req.params
     try {
       await data.users.update(
@@ -51,12 +51,12 @@ class UsersController {
         }
       });
       return res.status(201).json({ status: "usuário alterado com sucesso"})
-    } catch(err) {
-      return res.status(400).json({ error: err.message })
+    } catch(e) {
+      return res.status(400).json({ error: e.message })
     }
   }
 
-  static async deleteUser(req, res, next) {
+  static async deleteUser(req, res) {
     const { id } = req.params
     try {
       await data.users.destroy({
@@ -65,8 +65,8 @@ class UsersController {
         }
       });
       return res.status(201).json({ status: "usuário deletado com sucesso"})
-    } catch(err) {
-      return res.status(400).json({ error: err.message })
+    } catch(e) {
+      return res.status(400).json({ error: e.message })
     }
   }
 

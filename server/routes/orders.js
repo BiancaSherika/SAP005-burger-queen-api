@@ -5,7 +5,7 @@ const ordersRouter = Router()
 
 ordersRouter.get('/', ordersController.getOrders)
 ordersRouter.get('/:id', ordersController.getOrderId) 
-ordersRouter.post('/', ordersController.creatOrder)
+ordersRouter.post('/', ordersController.createOrder)
 ordersRouter.put('/:id', ordersController.updateOrderId)
 ordersRouter.delete('/:id', ordersController.deleteOrderId)
 
