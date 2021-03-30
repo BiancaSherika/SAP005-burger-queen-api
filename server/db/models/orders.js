@@ -17,6 +17,7 @@ module.exports = (sequelize, DataTypes) => {
       });
     }
   };
+  
   Order.init({
     user_id: DataTypes.INTEGER,
     client_name: DataTypes.STRING,

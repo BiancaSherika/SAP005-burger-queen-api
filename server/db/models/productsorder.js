@@ -13,6 +13,7 @@ module.exports = (sequelize, DataTypes) => {
       }); 
     }
   };
+  
   ProductsOrder.init({
     order_id: DataTypes.INTEGER,
     product_id: DataTypes.INTEGER,

@@ -13,6 +13,7 @@ module.exports = (sequelize, DataTypes) => {
       });
     }
   };
+  
   Products.init({
     name: DataTypes.STRING,
     flavor: DataTypes.STRING,
