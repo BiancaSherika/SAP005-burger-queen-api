@@ -1,26 +1,69 @@
-const getProducts = (req, res) => {
-  console.log("você também pode utilizar o console para visualizar =)")
-  res.send("Request Get Products")
+const data = require("../db/models")
+
+class ProductsController {
+  static async getProducts(__, res) {
+    try {
+      const allProducts = await data.Products.findAll();
+      return res.status(200).json(allProducts);
+    } catch (err) {
+      return res.status(400).json(err.message);
+    }
+  }
+
+  static async createProduct(req, res) {
+    const newProduct = req.body;
+    try {
+      const createdProduct = await data.Products.create(newProduct);
+      return res.status(201).json(createdProduct)
+    } catch (err) {
+      return res.status(400).json(err.message);
+    }
+  }
+
+  static async getProductId(req, res) {
+    const { id } = req.params
+    try {
+      const byId = await data.Products.findAll({
+        where: {
+          id: Number(id)
+        }
+      });
+      return res.status(200).json(byId)
+    } catch (err) {
+      return res.status(400).json(err.message);
+    }
+  }
+
+  static async updateProductId(req, res) {
+    const { id } = req.params
+    try {
+       await data.Products.update(
+        { price: req.body.price, image: req.body.image }, {
+        where: {
+          id: Number(id)
+        }
+      });
+      return res.status(201).json("produto alterado com sucesso")
+    } catch (err) {
+      return res.status(400).json(err.message);
+    }
+  }
+
+  static async deleteProductId(req, res) {
+    const { id } = req.params
+    try {
+      await data.Products.destroy({
+        where: {
+          id: Number(id)
+        }
+      });
+      return res.status(201).json("produto deletado com sucesso")
+    } catch (err) {
+      return res.status(400).json(err.message);
+    }
+  }
+
+
 }
 
-const getProductId = (req, res) => {
-  console.log("você também pode utilizar o console para visualizar =)")
-  res.send("Request Get Product ID")
-}
-
-const creatProduct = (req, res) => {
-  console.log("você também pode utilizar o console para visualizar =)")
-  res.send("Request Creat Product")
-}
-
-const updateProductId = (req, res) => {
-  console.log("você também pode utilizar o console para visualizar =)")
-  res.send("Request Update Product ID")
-}
-
-const deleteProductId = (req, res) => {
-  console.log("você também pode utilizar o console para visualizar =)")
-  res.send("Request Delete Product ID")
-}
-
-module.exports = { getProducts, getProductId, creatProduct, updateProductId, deleteProductId }
+module.exports = ProductsController

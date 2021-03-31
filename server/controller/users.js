@@ -9,8 +9,18 @@ class UsersController {
         }
       });
       return res.status(200).json(allUsers);
-    } catch (e) {
-      return res.status(400).json({ error : e.message })
+    } catch (err) {
+      return res.status(400).json(err.message);
+    }
+  }
+
+  static async createUser(req, res) {
+    const newUser = req.body;
+    try {
+      const createdUser = await data.users.create(newUser);
+      return res.status(201).json(createdUser)
+    } catch (err) {
+      return res.status(400).json(err.message);
     }
   }
 
@@ -26,18 +36,8 @@ class UsersController {
         }
       });
       return res.status(200).json(userId)
-    } catch(e) {
-      return res.status(400).json({ error: e.message })
-    }
-  }
-
-  static async createUser(req, res) {
-    const newUser = req.body;
-    try {
-      const createdUser = await data.users.create(newUser);
-      return res.status(201).json(createdUser)
-    } catch (e) {
-      return res.status(400).json({ error: e.message })
+    } catch (err) {
+      return res.status(400).json(err.message);
     }
   }
 
@@ -50,9 +50,9 @@ class UsersController {
           id: Number(id)
         }
       });
-      return res.status(201).json({ status: "usuário alterado com sucesso"})
-    } catch(e) {
-      return res.status(400).json({ error: e.message })
+      return res.status(201).json("usuário alterado com sucesso")
+    } catch (err) {
+      return res.status(400).json(err.message);
     }
   }
 
@@ -64,9 +64,9 @@ class UsersController {
           id: Number(id)
         }
       });
-      return res.status(201).json({ status: "usuário deletado com sucesso"})
-    } catch(e) {
-      return res.status(400).json({ error: e.message })
+      return res.status(201).json("usuário deletado com sucesso")
+    } catch (err) {
+      return res.status(400).json(err.message);
     }
   }
 

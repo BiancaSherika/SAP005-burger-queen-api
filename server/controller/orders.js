@@ -5,8 +5,8 @@ class OrdersController {
     try {
       const orders = await data.Order.findAll();
       return res.status(200).json(orders);
-    } catch (error) {
-      return res.status(400).json({ error: error.message });
+    } catch (err) {
+      return res.status(400).json(err.message);
     }
   }
 
@@ -14,8 +14,8 @@ class OrdersController {
     try {
       const newOrder = await data.Order.create(req.body);
       return res.status(201).json(newOrder);
-    } catch (error) {
-      return res.status(400).json({ error: error.message });
+    } catch (err) {
+      return res.status(400).json(err.message);
     }
   }
 
@@ -26,8 +26,8 @@ class OrdersController {
         where: { id: Number(id) }
       })
       return res.status(200).json(orderId)
-    } catch (e) {
-      return res.status(400).json({ error: e.message })
+    } catch (err) {
+      return res.status(400).json(err.message);
     }
   }
 
@@ -38,9 +38,9 @@ class OrdersController {
       await data.Order.update({ status }, {
         where: { id: Number(id) }
       })
-      return res.status(201).json({ status: "pedido alterado com sucesso" })
-    } catch (e) {
-      return res.status(400).json({ error: e.message })
+      return res.status(201).json("pedido alterado com sucesso")
+    } catch (err) {
+      return res.status(400).json(err.message);
     }
   }
 
@@ -50,9 +50,9 @@ class OrdersController {
       const orderId = await data.Order.destroy({
         where: { id: Number(id) }
       })
-      return res.status(200).json({status: "pedido deletado com sucesso"})
-    } catch (e) {
-      return res.status(400).json({ error: e.message })
+      return res.status(200).json("pedido deletado com sucesso")
+    } catch (err) {
+      return res.status(400).json(err.message);
     }
   }
 

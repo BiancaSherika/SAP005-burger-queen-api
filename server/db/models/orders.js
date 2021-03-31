@@ -9,7 +9,7 @@ module.exports = (sequelize, DataTypes) => {
         through: 'ProductsOrder',
         as: 'products',
         foreignKey: 'order_id',
-        otherKey: 'product_id',
+        onDelete: 'CASCADE'
       });
 
       Order.belongsTo(models.users, {

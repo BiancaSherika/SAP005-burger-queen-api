@@ -9,7 +9,6 @@ module.exports = (sequelize, DataTypes) => {
         through: 'ProductsOrder',
         as: 'orders',
         foreignKey: 'product_id',
-        otherKey: 'order_id',
       });
     }
   };
@@ -21,7 +20,7 @@ module.exports = (sequelize, DataTypes) => {
     price: DataTypes.DOUBLE,
     image: DataTypes.STRING,
     type: DataTypes.STRING,
-    subtype: DataTypes.STRING
+    subType: DataTypes.STRING
   }, {
     sequelize,
     modelName: 'Products',
