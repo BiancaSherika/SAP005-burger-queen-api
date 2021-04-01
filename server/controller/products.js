@@ -23,12 +23,12 @@ class ProductsController {
   static async getProductId(req, res) {
     const { id } = req.params
     try {
-      const byId = await data.Products.findAll({
+      const getById = await data.Products.findAll({
         where: {
           id: Number(id)
         }
       });
-      return res.status(200).json(byId)
+      return res.status(200).json(getById)
     } catch (err) {
       return res.status(400).json(err.message);
     }

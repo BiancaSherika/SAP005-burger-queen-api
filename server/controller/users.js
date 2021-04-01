@@ -3,7 +3,7 @@ const data = require("../db/models")
 class UsersController {
   static async getUsers(__, res) {
     try {
-      const allUsers = await data.users.findAll({
+      const allUsers = await data.Users.findAll({
         attributes: {
           exclude: ["password"]
         }
@@ -17,7 +17,7 @@ class UsersController {
   static async createUser(req, res) {
     const newUser = req.body;
     try {
-      const createdUser = await data.users.create(newUser);
+      const createdUser = await data.Users.create(newUser);
       return res.status(201).json(createdUser)
     } catch (err) {
       return res.status(400).json(err.message);
@@ -27,7 +27,7 @@ class UsersController {
   static async getUserId(req, res) {
     const { id } = req.params
     try {
-      const userId = await data.users.findAll({
+      const userId = await data.Users.findAll({
         where: {
           id: Number(id)
         },
@@ -44,7 +44,7 @@ class UsersController {
   static async updateUser(req, res) {
     const { id } = req.params
     try {
-      await data.users.update(
+      await data.Users.update(
         { name: req.body.name, password: req.body.password, role: req.body.role }, {
         where: {
           id: Number(id)
@@ -59,7 +59,7 @@ class UsersController {
   static async deleteUser(req, res) {
     const { id } = req.params
     try {
-      await data.users.destroy({
+      await data.Users.destroy({
         where: {
           id: Number(id)
         }
