@@ -50,7 +50,7 @@ class UsersController {
           id: Number(id)
         }
       });
-      return res.status(201).json("usuário alterado com sucesso")
+      return res.status(200).json("usuário alterado com sucesso")
     } catch (err) {
       return res.status(400).json(err.message);
     }
@@ -64,7 +64,7 @@ class UsersController {
           id: Number(id)
         }
       });
-      return res.status(201).json("usuário deletado com sucesso")
+      return res.status(200).json("usuário deletado com sucesso")
     } catch (err) {
       return res.status(400).json(err.message);
     }

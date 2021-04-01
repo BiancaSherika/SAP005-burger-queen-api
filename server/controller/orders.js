@@ -3,7 +3,7 @@ const data = require("../db/models")
 class OrdersController {
   static async getOrders(__, res) {
     try {
-      const allOrders = await data.Orders.findAll({
+      const ordersList = await data.Orders.findAll({
         include: [{
           model: data.Products,
           as: 'products',
@@ -13,27 +13,26 @@ class OrdersController {
             'name',
             'flavor',
             'complement',
+            'price',
             'type',
-            'subType',
-            'price'
+            'subType'
           ],
           through: {
             model: data.ProductsOrders,
-            as: 'ProductsOrders',
+            as: 'qtd',
             attributes: ['qtd']
           }
         }]
-      });
-      return res.status(200).json(allOrders);
+      })
+      return res.status(200).json(ordersList);
     } catch (err) {
       return res.status(400).json(err.message);
     }
   }
-
   static async createOrder(req, res) {
     try {
       const newOrder = await data.Orders.create(req.body);
-      const productsOrder = req.body.products.map(async(item) => {
+      req.body.products.map(async (item) => {
         const product = await data.Products.findByPk(item.productId);
         if (!product) {
           return res.status(400).json("Produto não encontrado");
@@ -54,10 +53,28 @@ class OrdersController {
   static async getOrderId(req, res) {
     const { id } = req.params
     try {
-      const orderId = await data.Orders.findAll({
-        where: { id: Number(id) }
+      const getById = await data.Orders.findAll({
+        where: { id: Number(id) },
+        include: [{
+          model: data.Products,
+          as: 'products',
+          required: false,
+          attributes: [
+            'id',
+            'name',
+            'flavor',
+            'complement',
+            'price',
+            'type',
+            'subType'
+          ],
+          through: {
+            model: data.ProductsOrders,
+            attributes: ['qtd']
+          }
+        }]
       })
-      return res.status(200).json(orderId)
+      return res.status(200).json(getById)
     } catch (err) {
       return res.status(400).json(err.message);
     }
@@ -70,7 +87,7 @@ class OrdersController {
       await data.Orders.update({ status }, {
         where: { id: Number(id) }
       })
-      return res.status(201).json("pedido alterado com sucesso")
+      return res.status(200).json("pedido alterado com sucesso")
     } catch (err) {
       return res.status(400).json(err.message);
     }
@@ -82,7 +99,7 @@ class OrdersController {
       await data.Orders.destroy({
         where: { id: Number(id) }
       })
-      return res.status(201).json("pedido deletado com sucesso")
+      return res.status(200).json("pedido deletado com sucesso")
     } catch (err) {
       return res.status(400).json(err.message);
     }

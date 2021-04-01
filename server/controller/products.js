@@ -43,7 +43,7 @@ class ProductsController {
           id: Number(id)
         }
       });
-      return res.status(201).json("produto alterado com sucesso")
+      return res.status(200).json("produto alterado com sucesso")
     } catch (err) {
       return res.status(400).json(err.message);
     }
@@ -57,7 +57,7 @@ class ProductsController {
           id: Number(id)
         }
       });
-      return res.status(201).json("produto deletado com sucesso")
+      return res.status(200).json("produto deletado com sucesso")
     } catch (err) {
       return res.status(400).json(err.message);
     }
