@@ -11,7 +11,7 @@
 
 ## 1. Apresentação
 
-Vegan Queen API é uma aplicação web desenvolvida para atender à necessidade sob demanda do restaurante sob mesmo nome, que já possui a interface front end desenvolvida e necessitava do back end em formato de API Rest e conexão com banco de dados. Este projeto foi proposto pela Laboratória, cujo objetivo é aprendizagem de programação back end, utilizando o restaurante fíctício Vegan Queen como exemplo, cuja interface esta neste repositório.
+Vegan Queen API é uma aplicação web desenvolvida para atender à necessidade sob demanda do restaurante sob mesmo nome, que já possui a interface front end desenvolvida e necessitava do back end em formato de API Rest e conexão com banco de dados. Este projeto foi proposto pela Laboratória, cujo objetivo é aprendizagem de programação back end, utilizando o restaurante fíctício Vegan Queen como exemplo, cuja interface este <a href="https://www.github.com/BiancaSherika/vegan-queen">repositório</a>.
 
 As demandas do restaurante que o projeto atende são: criação e atualização de cadastro de funcionários, armazenar e visualizar produtos padrões, armazenar e visualizar comandas de pedidos e mudança de status dos pedidos conforme etapas de preparo.
 
