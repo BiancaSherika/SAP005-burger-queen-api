@@ -1,9 +1,9 @@
 const express = require('express')
-const routes = require('./server/routes/index')
 const cors = require("cors")
+const routes = require('./server/routes/index')
 const dotenv = require('dotenv')
-const port = process.env.PORT || 3003
 const app = express()
+const port = process.env.PORT || 3003
 
 if (process.env.NODE_ENV !== 'production') {
   dotenv.config()
