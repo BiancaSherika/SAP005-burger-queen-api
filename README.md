@@ -4,13 +4,11 @@
 
 * [1. apresentação](#1-apresentação)
 * [2. End-Points](#2-end-points)
-* [3. Deploy](#3-deploy)
-* [4. Tecnologias Utilizadas](#4-tenologias-utilizadas)
-* [5. Melhorias Futuras](#5-melhorias-futuras)
-* [6. Deva](#6-deva)
-* [7. Primeiros Passos](#7-primeiros-passos)
-* [8. HTTP API Checklist](#8-http-api-checklist)
-* [9. Hacker Edition](#9-hacker-edition)
+* [3. Fluxograma](#3-fluxograma)
+* [4. Deploy](#3-deploy)
+* [5. Tecnologias Utilizadas](#5-tenologias-utilizadas)
+* [6. Melhorias Futuras](#6-melhorias-futuras)
+* [7. Deva](#7-deva)
 
 ## 1. Apresentação
 
@@ -46,16 +44,18 @@ A aplicação possui os seguintes End-Points:
 * `PUT /orders/:orderId`
 * `DELETE /orders/:orderId`
 
-## 4. Fluxograma
+## 3. Fluxograma
 
-![](/src/img/readme/DesignerSprint.png)
+A estruturação das tabelas e suas relações está exemplificado aqui: 
 
-## 3. Deploy
+![](/server/img/fluxograma.png)
+
+## 4. Deploy
 
 O Deploy foi realizado através da plataforma Heroku, cujo acesso pode ser feito pelo link:
 https://b-q-api.herokuapp.com/
 
-## 4. Tecnologias Utilizadas
+## 5. Tecnologias Utilizadas
 
  Node.js
  JavaScript
@@ -69,7 +69,7 @@ https://b-q-api.herokuapp.com/
  Swagger UI
  VsCode 
  
-## 5. Melhorias Futuras
+## 6. Melhorias Futuras
 
 Para as proximas refatorações serão implementados:
 
@@ -81,6 +81,6 @@ Para as proximas refatorações serão implementados:
 * Testes _e2e_
 * Docker
 
-## 6. Deva
+## 7. Deva
 
-Este projeto foi desenvolvido pela Desenvolvedora <a href=“www.linkedin.com/in/bianca-sherika-cavalcante-claro/“>Bianca Sherika Cavalcante Claro</a>
+Este projeto foi desenvolvido pela Desenvolvedora <a href=“www.linkedin.com/in/bianca-sherika-cavalcante-claro/“>Bianca Sherika Cavalcante Claro</a>.
