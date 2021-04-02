@@ -5,10 +5,9 @@
 * [1. apresentação](#1-apresentação)
 * [2. End-Points](#2-end-points)
 * [3. Fluxograma](#3-fluxograma)
-* [4. Deploy](#3-deploy)
-* [5. Tecnologias Utilizadas](#5-tenologias-utilizadas)
+* [4. Deploy](#4-deploy)
+* [5. Tecnologias Utilizadas](#5-tecnologias-utilizadas)
 * [6. Melhorias Futuras](#6-melhorias-futuras)
-* [7. Deva](#7-deva)
 
 ## 1. Apresentação
 
@@ -57,17 +56,17 @@ https://b-q-api.herokuapp.com/
 
 ## 5. Tecnologias Utilizadas
 
- Node.js
- JavaScript
- Git e GitHub
- Express
- Sequelize
- Heroku
- PostgreSQL
- Insomnia
- Dbeaver
- Swagger UI
- VsCode 
+- Node.js
+- JavaScript
+- Git e GitHub
+- Express
+- Sequelize
+- Heroku
+- PostgreSQL
+- Insomnia
+- Dbeaver
+- Swagger UI
+- VsCode 
  
 ## 6. Melhorias Futuras
 
@@ -80,7 +79,3 @@ Para as proximas refatorações serão implementados:
 * Testes unitários
 * Testes _e2e_
 * Docker
-
-## 7. Deva
-
-Este projeto foi desenvolvido pela Desenvolvedora <a href=“www.linkedin.com/in/bianca-sherika-cavalcante-claro/“>Bianca Sherika Cavalcante Claro</a>.
