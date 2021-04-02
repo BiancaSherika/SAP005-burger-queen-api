@@ -3,7 +3,7 @@ const data = require("../db/models")
 class OrdersController {
   static async getOrders(__, res) {
     try {
-      const ordersList = await data.Orders.findAll({
+      let ordersList = await data.Orders.findAll({
         include: [{
           model: data.Products,
           as: 'products',
@@ -24,7 +24,21 @@ class OrdersController {
           }
         }]
       })
-      return res.status(200).json(ordersList);
+
+      ordersList = JSON.parse(JSON.stringify(ordersList))
+
+      const qtdOrder = ordersList.map((item) => {
+        const qtdProduct = item.products.map((product) => ({
+          ...product,
+          qtd: product.qtd.qtd
+        }))
+        return {
+        ...item,
+        products: qtdProduct
+        }
+      });
+
+      return res.status(200).json(qtdOrder);
     } catch (err) {
       return res.status(400).json(err.message);
     }
@@ -53,12 +67,11 @@ class OrdersController {
   static async getOrderId(req, res) {
     const { id } = req.params
     try {
-      const getById = await data.Orders.findAll({
+      let getById = await data.Orders.findOne({
         where: { id: Number(id) },
         include: [{
           model: data.Products,
           as: 'products',
-          required: false,
           attributes: [
             'id',
             'name',
@@ -70,11 +83,25 @@ class OrdersController {
           ],
           through: {
             model: data.ProductsOrders,
+            as: 'qtd',
             attributes: ['qtd']
           }
         }]
       })
-      return res.status(200).json(getById)
+
+      getById = getById.toJSON()
+
+      const qtdProduct = getById.products.map((item) => ({
+        ...item,
+        qtd: item.qtd.qtd
+      }))
+
+      const result = {
+        ...getById,
+        products: qtdProduct
+      }
+
+      return res.status(200).json(result)
     } catch (err) {
       return res.status(400).json(err.message);
     }
