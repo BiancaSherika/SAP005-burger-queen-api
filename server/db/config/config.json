@@ -1,0 +1,41 @@
+{
+  "development": {
+    "username": "ugcphmvvurnsrw",
+    "password": "202518a074602010526445d2ad476d2d697f24229d0576bb50a4c4ba21340a5c",
+    "database": "d1djtjptdq556j",
+    "host": "ec2-54-145-102-149.compute-1.amazonaws.com",
+    "dialect": "postgres",
+    "dialectOptions": {
+      "ssl": {
+        "require": true,
+        "rejectUnauthorized": false
+      }
+    }
+  },
+  "test": {
+    "username": "ugcphmvvurnsrw",
+    "password": "202518a074602010526445d2ad476d2d697f24229d0576bb50a4c4ba21340a5c",
+    "database": "d1djtjptdq556j",
+    "host": "ec2-54-145-102-149.compute-1.amazonaws.com",
+    "dialect": "postgres",
+    "dialectOptions": {
+      "ssl": {
+        "require": true,
+        "rejectUnauthorized": false
+      }
+    }
+  },
+  "production": {
+    "username": "ugcphmvvurnsrw",
+    "password": "202518a074602010526445d2ad476d2d697f24229d0576bb50a4c4ba21340a5c",
+    "database": "d1djtjptdq556j",
+    "host": "ec2-54-145-102-149.compute-1.amazonaws.com",
+    "dialect": "postgres",
+    "dialectOptions": {
+      "ssl": {
+        "require": true,
+        "rejectUnauthorized": false
+      }
+    }
+  }
+}
