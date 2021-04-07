@@ -1,5 +1,7 @@
 # Vegan Queen API
 
+Teste a aplicação aqui: https://b-q-api.herokuapp.com/
+
 ## Índice
 
 * [1. Apresentação](#1-apresentação)
