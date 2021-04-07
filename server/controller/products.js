@@ -6,7 +6,6 @@ class ProductsController {
       const allProducts = await data.Products.findAll();
       return res.status(200).json(allProducts);
     } catch (err) {
-      console.log(err);
       return res.status(400).json(err.message);
     }
   }
