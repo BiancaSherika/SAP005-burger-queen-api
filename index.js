@@ -10,7 +10,7 @@ app.use(express.json());
 app.use('/', routes);
 
 app.get('*', (req, res) => {
-  res.send('Hello World!!')
+  res.send('Vegan Queen API !!')
 }) 
 
 app.listen(port, () => {
